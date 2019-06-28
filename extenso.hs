@@ -29,6 +29,7 @@ centenas = ["cem","cento", "duzentos","trezentos","quatrocentos","quinhentos","s
 
 extenso :: Int->String
 extenso n
+ |(n == 1) = "um real"
  |(n < 1000) = ordem n ++" reais"
  |(n == 1000) = "mil reais"
  |(n < 2000) = "mil "++ordem (n-1000)++" reais"

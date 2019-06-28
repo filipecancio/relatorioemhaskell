@@ -18,12 +18,19 @@ espaco n
  | (n <= 0) = ""
  |otherwise = " " ++ espaco (n-1)
 
+--Imprimir  o titulo
+titulo :: String -> IO ()
+titulo n = do
+  putStrLn (trave (tamanho n+60))
+  putStrLn (espaco 30 ++ n ++ espaco 30)
+  putStrLn (trave (tamanho n+60))
+
 --Imprimir  o cabecalho
 cabecalho :: String -> IO ()
 cabecalho n = do
-  putStrLn (trave (tamanho n+10))
+  putStrLn (trave (tamanho n+60))
   putStrLn (espaco 5 ++ n ++ espaco 5)
-  putStrLn (trave (tamanho n+10))
+  putStrLn (trave (tamanho n+60))
 
 -- valores de vendas correspondentes aos meses
 vendas :: Int -> Int
@@ -69,6 +76,10 @@ linhamenor(x:y)
   |(x < linhamenor y ) = x
   |otherwise =  linhamenor y
 
+--Calcular media
+linhamedia :: Int->Int
+linhamedia n = div (total n) n
+
 -- Imprimir linha
 linha :: Int -> IO ()
 linha n = do
@@ -77,17 +88,23 @@ linha n = do
  -- Imprimir total
 linhaTotal :: Int -> IO ()
 linhaTotal n = do
- putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n)++ "\t\t" ++ show(extenso (vendas n)))
+ putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n)++ "\t\t" ++ show(extenso (total n)))
 
  -- Imprimir maior
 linhaMaior :: Int -> IO ()
 linhaMaior n = do
- putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n))++ "\t\t" ++ show(extenso (vendas n)))
+ putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n))++ "\t\t" ++ show(extenso (linhamaior (lista n))))
 
-  -- Imprimir maior
+-- Imprimir maior
 linhaMenor :: Int -> IO ()
 linhaMenor n = do
- putStrLn (espaco 5 ++ "Menor" ++ "\t" ++ show(linhamenor (lista n))++ "\t\t" ++ show(extenso (vendas n)))
+ putStrLn (espaco 5 ++ "Menor" ++ "\t" ++ show(linhamenor (lista n))++ "\t\t" ++ show(extenso (linhamenor (lista n))))
+
+-- Imprimir media
+linhaMedia :: Int -> IO ()
+linhaMedia n = do
+ putStrLn (espaco 5 ++ "Média" ++ "\t" ++ show(linhamedia n)++ "\t\t" ++ show(extenso (linhamedia n)))
+
 
 -- Imprimir linhas
 linhas :: Int -> IO ()
@@ -101,8 +118,9 @@ linhas n
 corpo :: Int -> IO ()
 corpo n = do
   linhas n
-  linhaTotal n
   linhaMaior n
   linhaMenor n
+  linhaMedia n
+  linhaTotal n
 
 

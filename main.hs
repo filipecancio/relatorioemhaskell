@@ -13,7 +13,7 @@ import Extenso
 --Comando de execucao do relatorio
 relatorio :: Int -> IO ()
 relatorio n = do
- cabecalho "Relatório de vendas - Empresa xyz\n"
+ titulo "Relatório de vendas - Empresa xyz\n"
  cabecalho "Mes        Quantidade      Extenso"
  corpo n
 
