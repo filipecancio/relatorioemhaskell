@@ -8,12 +8,13 @@
 -- digitar :l main formatacao extenso
 module Relatorio where
 import Formatacao
+import Extenso
 
 --Comando de execucao do relatorio
 relatorio :: Int -> IO ()
 relatorio n = do
  cabecalho "Relatório de vendas - Empresa xyz\n"
- cabecalho "Mes        Quantidade"
+ cabecalho "Mes        Quantidade      Extenso"
  corpo n
 
 

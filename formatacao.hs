@@ -72,26 +72,27 @@ linhamenor(x:y)
 -- Imprimir linha
 linha :: Int -> IO ()
 linha n = do
- putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n))
+ putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n)++ "\t\t" ++ show(extenso n))
 
  -- Imprimir total
 linhaTotal :: Int -> IO ()
 linhaTotal n = do
- putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n))
+ putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n)++ "\t\t" ++ show(extenso (vendas n)))
 
  -- Imprimir maior
 linhaMaior :: Int -> IO ()
 linhaMaior n = do
- putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n)))
+ putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n))++ "\t\t" ++ show(extenso (vendas n)))
 
   -- Imprimir maior
 linhaMenor :: Int -> IO ()
 linhaMenor n = do
- putStrLn (espaco 5 ++ "Menor" ++ "\t" ++ show(linhamenor (lista n)))
+ putStrLn (espaco 5 ++ "Menor" ++ "\t" ++ show(linhamenor (lista n))++ "\t\t" ++ show(extenso (vendas n)))
 
 -- Imprimir linhas
 linhas :: Int -> IO ()
-linhas n |(n <= 1) = do linha n
+linhas n 
+  |(n <= 1) = do linha n
   |(n >1) = do 
   linhas (n-1) 
   linha n
