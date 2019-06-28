@@ -72,7 +72,7 @@ linhamenor(x:y)
 -- Imprimir linha
 linha :: Int -> IO ()
 linha n = do
- putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n)++ "\t\t" ++ show(extenso n))
+ putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n)++ "\t\t" ++ show(extenso (vendas n)))
 
  -- Imprimir total
 linhaTotal :: Int -> IO ()
