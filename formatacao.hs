@@ -41,21 +41,53 @@ vendas n
   |n == 11 = 10654
   |n == 12 = 9852
 
+--convert vendas em lista
+lista :: Int -> [Int]
+lista n
+ |n == 1 = [vendas 1]
+ |n > 1 = [vendas n] ++ lista (n-1)
+
 -- Calcular total
 total :: Int -> Int
 total n
  |n == 1 = vendas n
  |n > 1 = vendas n + total(n-1)
 
+-- Calcular maior valor
+linhamaior::[Int]->Int
+linhamaior [n]
+   | (tamanho [n] == 1) = n
+linhamaior(x:y)
+  |(x > linhamaior y ) = x
+  |otherwise =  linhamaior y
+
+-- Calcular menor valor
+linhamenor::[Int]->Int
+linhamenor [n]
+  | (tamanho [n] == 1) = n
+linhamenor(x:y)
+  |(x < linhamenor y ) = x
+  |otherwise =  linhamenor y
+
 -- Imprimir linha
 linha :: Int -> IO ()
 linha n = do
  putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n))
 
- -- Imprimir linha
+ -- Imprimir total
 linhaTotal :: Int -> IO ()
 linhaTotal n = do
  putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n))
+
+ -- Imprimir maior
+linhaMaior :: Int -> IO ()
+linhaMaior n = do
+ putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n)))
+
+  -- Imprimir maior
+linhaMenor :: Int -> IO ()
+linhaMenor n = do
+ putStrLn (espaco 5 ++ "Menor" ++ "\t" ++ show(linhamenor (lista n)))
 
 -- Imprimir linhas
 linhas :: Int -> IO ()
@@ -69,3 +101,7 @@ corpo :: Int -> IO ()
 corpo n = do
   linhas n
   linhaTotal n
+  linhaMaior n
+  linhaMenor n
+
+
