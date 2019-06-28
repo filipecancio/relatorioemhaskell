@@ -6,6 +6,7 @@ valor :: Int -> Int
 valor x
  |(x == 1) = 2 --pao
  |(x == 2) = 4 --broa
+ |otherwise = 0
 
 -- valores de vendas correspondentes aos meses
 
@@ -24,6 +25,7 @@ qtPao x
   |(x == 10) = 212
   |(x == 11) = 1065
   |(x == 12) = 985
+  |otherwise = 0
 
 
 -- Quantidade de broa
@@ -41,29 +43,25 @@ qtBroa x
   |(x == 10) = 234
   |(x == 11) = 54
   |(x == 12) = 246
+  |otherwise = 0
 
 -- Funcoes get
 
--- retorna lista de quantidade de paes
-getQtPao :: Int -> [Int]
-getQtPao x
- |(x == 1) = [qtPao 1]
- |(x > 1) = [qtPao x] ++ getQtPao (x-1)
-
--- retorna lista de quantidade de broas
-getQtBroa :: Int -> [Int]
-getQtBroa x
- |(x == 1) = [qtBroa 1]
- |(x > 1) = [qtBroa x] ++ getQtBroa (x-1)
+-- quantidades
+qt :: (Int,Int)->Int
+qt (x,y)
+ |(x == 1) = qtPao y
+ |(x == 2) = qtBroa y
+ |otherwise = 0
 
 -- retorna lista de quantidades
-getQt :: Int->Int->[Int]
-getQt x y
- |(x == 1) = getQtPao (y)
- |(x == 2) = getQtBroa (y)
+getQt :: (Int,Int)->[Int]
+getQt(x,y)
+ |(y == 1) = [qt(x,y)]
+ |otherwise = [qt(x,y)]++ getQt (x,(y-1))
 
 --retorna lista de valores
-getValores :: Int->Int->[Int]
-getValores x
- |(x == 1) = multiplicar (getQtPao y) (valor 1)
- |(x == 2) = multiplicar (getQtBroa y) (valor 2)
+--getValores :: Int->Int->[Int]
+--getValores x y
+--- |(x == 1) = multiplicar (getQtPao y) (valor 1)
+--- |(x == 2) = multiplicar (getQtBroa y) (valor 2)

@@ -19,26 +19,17 @@ mes n
   |n == 12 = "Dezembro"
 
 -- Imprimir linha
-linha :: Int->Int-> IO ()
-linha x y
-|(y = 1) = do putStrLn (espaco 5 ++ mes x ++ "\t" ++ show(qtPao x)++ "\t\t" ++ show(extenso (vendas n)))
-|(y = 2) = do 
+linha :: (Int,Int)-> IO ()
+linha (x,y) = do 
+ putStrLn (espaco 5 ++ mes y ++ "\t" ++ show(qt(x,y))++ "\t\t" ++ show(getQt(x,y))
 
+ {-
+-- Imprimir total
+--linhaTotal :: Int -> IO ()
+--linhaTotal n = do
+-- putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n)++ "\t\t" ++ show(extenso (total n)))
 
-
-
-
-
-
-
-
-
- -- Imprimir total
-linhaTotal :: Int -> IO ()
-linhaTotal n = do
- putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n)++ "\t\t" ++ show(extenso (total n)))
-
- -- Imprimir maior
+-- Imprimir maior
 linhaMaior :: Int -> IO ()
 linhaMaior n = do
  putStrLn (espaco 5 ++ "Maior" ++ "\t" ++ show(linhamaior (lista n))++ "\t\t" ++ show(extenso (linhamaior (lista n))))
@@ -52,3 +43,4 @@ linhaMenor n = do
 linhaMedia :: Int -> IO ()
 linhaMedia n = do
  putStrLn (espaco 5 ++ "Média" ++ "\t" ++ show(linhamedia n)++ "\t\t" ++ show(extenso (linhamedia n)))
+-}
