@@ -1,12 +1,14 @@
-module Relatorio when
+module Relatorio where
 
 texto :: String
-texto = "Relat�rio de vendas \n Empresa xyz"
+texto = "Relatório de vendas \n Empresa xyz"
 
+{-
 imprimirTracinhos :: Int -> String
 imprimirTracinhos n
 		 |n == 0 = " " 	
 		 |n > 0 = "-" ++ imprimirTracinhos (n-1)
+-}
 
 cabecalho :: String
 cabecalho = imprimirTracinhos 50 ++ "\n" ++ texto ++ "\n" ++ imprimirTracinhos 50 ++ "Mes \t Quantidade" ++ "\n"
@@ -15,7 +17,7 @@ convert :: Int -> String
 convert n
 	|n == 1 = "Janeiro"
 	|n == 2 = "Fevereiro"
-	|n == 3 = "Mar�o"
+	|n == 3 = "Março"
 	|n == 4 = "Abril"
 	|n == 5 = "Maio"
 	|n == 6 = "Junho"
@@ -23,7 +25,7 @@ convert n
 	|n == 8 = "Agosto"
 	|n == 9 = "Setembro"
 	|n == 10 = "Outubro"
-	|n == 11 = "novembro"
+	|n == 11 = "Novembro"
 	|n == 12 = "Dezembro"
 
 imprimirLinha :: Int -> String
