@@ -5,6 +5,7 @@
 -- d) Maior venda
 -- e) Menor venda
 -- f) Valor por extenso
+-- digitar :l main formatacao extenso
 module Relatorio where
 import Formatacao
 
