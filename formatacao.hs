@@ -1,4 +1,5 @@
 module Formatacao where
+import Extenso
 
 -- Calcula o tramanho de uma lista
 tamanho :: [t] -> Int
@@ -17,9 +18,54 @@ espaco n
  | (n <= 0) = ""
  |otherwise = " " ++ espaco (n-1)
 
-
+--Imprimir  o cabecalho
 cabecalho :: String -> IO ()
 cabecalho n = do
   putStrLn (trave (tamanho n+10))
   putStrLn (espaco 5 ++ n ++ espaco 5)
   putStrLn (trave (tamanho n+10))
+
+-- valores de vendas correspondentes aos meses
+vendas :: Int -> Int
+vendas n
+  |n == 1 = 213
+  |n == 2 = 120
+  |n == 3 = 789
+  |n == 4 = 3151
+  |n == 5 = 2315
+  |n == 6 = 8646
+  |n == 7 = 5646
+  |n == 8 = 3215
+  |n == 9 = 8865
+  |n == 10 = 2125
+  |n == 11 = 10654
+  |n == 12 = 9852
+
+-- Calcular total
+total :: Int -> Int
+total n
+ |n == 1 = vendas n
+ |n > 1 = vendas n + total(n-1)
+
+-- Imprimir linha
+linha :: Int -> IO ()
+linha n = do
+ putStrLn (espaco 5 ++ mes n ++ "\t" ++ show(vendas n))
+
+ -- Imprimir linha
+linhaTotal :: Int -> IO ()
+linhaTotal n = do
+ putStrLn (espaco 5 ++ "Total" ++ "\t" ++ show(total n))
+
+-- Imprimir linhas
+linhas :: Int -> IO ()
+linhas n |(n <= 1) = do linha n
+  |(n >1) = do 
+  linhas (n-1) 
+  linha n
+
+-- Imprimir corpo
+corpo :: Int -> IO ()
+corpo n = do
+  linhas n
+  linhaTotal n

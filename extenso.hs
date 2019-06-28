@@ -1,25 +1,16 @@
-module Formatacao where
-
--- Calcula o tramanho de uma lista
-tamanho :: [t] -> Int
-tamanho [] = 0
-tamanho (x:y) = 1 + tamanho y
-
--- Imprime tracinhos
-trave :: Int -> String
-trave n 
- | (n <= 0) = ""
- |otherwise = "-" ++ trave (n-1)
-
--- Imprime espaco
-espaco :: Int -> String
-espaco n 
- | (n <= 0) = ""
- |otherwise = " " ++ espaco (n-1)
-
-
-cabecalho :: String -> IO ()
-cabecalho n = do
-  putStrLn (trave (tamanho n+10))
-  putStrLn (espaco 5 ++ n ++ espaco 5)
-  putStrLn (trave (tamanho n+10))
+module Extenso where
+  
+mes :: Int -> String
+mes n
+  |n == 1 = "Janeiro"
+  |n == 2 = "Fevereiro"
+  |n == 3 = "Março"
+  |n == 4 = "Abril"
+  |n == 5 = "Maio"
+  |n == 6 = "Junho"
+  |n == 7 = "Julho"
+  |n == 8 = "Agosto"
+  |n == 9 = "Setembro"
+  |n == 10 = "Outubro"
+  |n == 11 = "Novembro"
+  |n == 12 = "Dezembro"
